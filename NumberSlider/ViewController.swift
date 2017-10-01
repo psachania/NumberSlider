@@ -343,22 +343,22 @@ class ViewController: UIViewController {
             print("Error with audio files!")
         }
         
-//        var leftSwipe = UISwipeGestureRecognizer(target: self, action: Selector(("handleSwipe:")))
-//        var rightSwipe = UISwipeGestureRecognizer(target: self, action: Selector(("handleSwipe:")))
-//        var upSwipe = UISwipeGestureRecognizer(target: self, action: Selector(("handleSwipe:")))
-//        var downSwipe = UISwipeGestureRecognizer(target: self, action: Selector(("handleSwipe:")))
-//
-//        leftSwipe.direction = .left
-//        rightSwipe.direction = .right
-//        upSwipe.direction = .up
-//        downSwipe.direction = .down
+        var leftSwipe = UISwipeGestureRecognizer(target: self, action: Selector(("handleSwipe:")))
+        var rightSwipe = UISwipeGestureRecognizer(target: self, action: Selector(("handleSwipe:")))
+        var upSwipe = UISwipeGestureRecognizer(target: self, action: Selector(("handleSwipe:")))
+        var downSwipe = UISwipeGestureRecognizer(target: self, action: Selector(("handleSwipe:")))
+
+        leftSwipe.direction = .left
+        rightSwipe.direction = .right
+        upSwipe.direction = .up
+        downSwipe.direction = .down
 
     }
 
-//    func handleSwipe(sender: UISwipeGestureRecognizer) {
-//        //numberPressed()
-//        print(sender.view?.description)
-//    }
+    func handleSwipe(sender: UISwipeGestureRecognizer) {
+        //numberPressed()
+        print(sender.view?.description)
+    }
     
     func numberButtonFormatting(button: UIButton) {
         button.layer.cornerRadius = 4
