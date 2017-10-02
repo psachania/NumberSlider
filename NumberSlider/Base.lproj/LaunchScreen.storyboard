@@ -31,7 +31,7 @@
                                 <rect key="frame" x="56" y="287" width="209" height="159"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <string key="text">Slide Numbers Game
-version 1.6
+version 1.8
 
 by Prakash Sachania</string>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="19"/>

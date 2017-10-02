@@ -342,22 +342,124 @@ class ViewController: UIViewController {
         } catch {
             print("Error with audio files!")
         }
+
+        //enable swipe on number buttons
+        enableSwipeOnNumberButton()
         
-        var leftSwipe = UISwipeGestureRecognizer(target: self, action: Selector(("handleSwipe:")))
-        var rightSwipe = UISwipeGestureRecognizer(target: self, action: Selector(("handleSwipe:")))
-        var upSwipe = UISwipeGestureRecognizer(target: self, action: Selector(("handleSwipe:")))
-        var downSwipe = UISwipeGestureRecognizer(target: self, action: Selector(("handleSwipe:")))
-
-        leftSwipe.direction = .left
-        rightSwipe.direction = .right
-        upSwipe.direction = .up
-        downSwipe.direction = .down
-
     }
 
-    func handleSwipe(sender: UISwipeGestureRecognizer) {
-        //numberPressed()
-        print(sender.view?.description)
+    func enableSwipeOnNumberButton() {
+        var leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe))
+        var rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe))
+        var upSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe))
+        var downSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe))
+        
+        self.view.addGestureRecognizer(leftSwipe)
+        self.view.addGestureRecognizer(rightSwipe)
+        self.view.addGestureRecognizer(upSwipe)
+        self.view.addGestureRecognizer(downSwipe)
+        
+        leftSwipe.direction = UISwipeGestureRecognizerDirection.left
+        rightSwipe.direction = UISwipeGestureRecognizerDirection.right
+        upSwipe.direction = UISwipeGestureRecognizerDirection.up
+        downSwipe.direction = UISwipeGestureRecognizerDirection.down
+    }
+    
+    @objc func handleSwipe(gesture: UIGestureRecognizer) {
+
+        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
+            var cellindexClick = -1
+            
+            switch swipeGesture.direction {
+            case UISwipeGestureRecognizerDirection.right:
+                if cellindexBlank - 1 >= 0 {
+                    cellindexClick = cellindexBlank - 1
+                }
+            case UISwipeGestureRecognizerDirection.up:
+                if cellindexBlank + 4 < 16 {
+                    cellindexClick = cellindexBlank + 4
+                }
+            case UISwipeGestureRecognizerDirection.left:
+                if cellindexBlank + 1 < 16 {
+                    cellindexClick = cellindexBlank + 1
+                }
+            case UISwipeGestureRecognizerDirection.down:
+                if cellindexBlank - 4 >= 0 {
+                    cellindexClick = cellindexBlank - 4
+                }
+            default:
+                break
+            }
+            
+            if cellindexClick > -1 {
+                switch solutionArray[cellindexClick] {
+                case 1:
+                    numberPressed(no1Button)
+                    break
+                case 2:
+                    numberPressed(no2Button)
+                    break
+                case 3:
+                    numberPressed(no3Button)
+                    break
+                case 4:
+                    numberPressed(no4Button)
+                    break
+                case 5:
+                    numberPressed(no5Button)
+                    break
+                case 6:
+                    numberPressed(no6Button)
+                    break
+                case 7:
+                    numberPressed(no7Button)
+                    break
+                case 8:
+                    numberPressed(no8Button)
+                    break
+                case 9:
+                    numberPressed(no9Button)
+                    break
+                case 10:
+                    numberPressed(no10Button)
+                    break
+                case 11:
+                    numberPressed(no11Button)
+                    break
+                case 12:
+                    numberPressed(no12Button)
+                    break
+                case 13:
+                    numberPressed(no13Button)
+                    break
+                case 14:
+                    numberPressed(no14Button)
+                    break
+                case 15:
+                    numberPressed(no15Button)
+                    break
+                default:
+                    break
+                }
+            }
+            
+            numberButtonFormatting(button: no1Button)
+            numberButtonFormatting(button: no2Button)
+            numberButtonFormatting(button: no3Button)
+            numberButtonFormatting(button: no4Button)
+            numberButtonFormatting(button: no5Button)
+            numberButtonFormatting(button: no6Button)
+            numberButtonFormatting(button: no7Button)
+            numberButtonFormatting(button: no8Button)
+            numberButtonFormatting(button: no9Button)
+            numberButtonFormatting(button: no10Button)
+            numberButtonFormatting(button: no11Button)
+            numberButtonFormatting(button: no12Button)
+            numberButtonFormatting(button: no13Button)
+            numberButtonFormatting(button: no14Button)
+            numberButtonFormatting(button: no15Button)
+
+        }
     }
     
     func numberButtonFormatting(button: UIButton) {
