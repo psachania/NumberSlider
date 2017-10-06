@@ -326,6 +326,14 @@
                                 <rect key="frame" x="280" y="16" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xbg-oa-fRS">
+                                <rect key="frame" x="276" y="540" width="26" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="MusicOn.png"/>
+                                <connections>
+                                    <action selector="changeSoundImage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="H3P-jP-NSV"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -353,6 +361,7 @@
                         <outlet property="resetButton" destination="BD7-T6-wcW" id="xxw-EZ-xTg"/>
                         <outlet property="resetLowestMovesButton" destination="aQE-rG-4At" id="r8Z-jE-4i4"/>
                         <outlet property="solutionFoundLabel" destination="ZkA-cU-AZq" id="Idv-eu-v7v"/>
+                        <outlet property="soundOnOffImage" destination="xbg-oa-fRS" id="vh7-cg-7Zd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -361,6 +370,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="MusicOn.png" width="82" height="90"/>
         <image name="number.png" width="300" height="300"/>
     </resources>
 </document>

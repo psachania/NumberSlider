@@ -39,6 +39,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var numberFrameLabel: UILabel!
 
     @IBOutlet weak var resetLowestMovesButton: UIButton!
+
+    @IBOutlet weak var soundOnOffImage: UIButton!
+    
+    //var soundImageView: UIImageView
     
     //**** Global variables ****
 
@@ -81,10 +85,12 @@ class ViewController: UIViewController {
 
     var lowestMoves = -1    //will store lowest steps performed ever to solve a puzzle
     var numberOfMoves = 0   //counts number of steps in the current game
+    var musicOn = true      //whether music should be on or off
+    var gameTimeStarted = false     //tracks if game timer is started or stopped
 
     //**** Action methods ****
     @IBAction func resetPuzzle(_ sender: UIButton) {
-        if (solutionFoundLabel.alpha == 0) {
+        if (solutionFoundLabel.alpha == 0 && musicOn) {
             playerResetSound.play()
         }
         resetPuzzle()
@@ -97,12 +103,19 @@ class ViewController: UIViewController {
         lowestMoveDefaults.set(lowestMoves, forKey: "LowestMoves")
         lowestMoveLabel.text = "  Current Lowest Moves : " + String(lowestMoves)
     }
+ 
     
+    @IBAction func changeSoundImage(_ sender: UIButton) {
+        musicOn = !musicOn
+        displayMusicChoiceImage()
+
+        let slideNumberDefaults = UserDefaults.standard
+        slideNumberDefaults.set(musicOn, forKey: "MusicOnOff")
+    }
     
     @IBAction func numberButtonTouchDown(_ sender: UIButton) {
         numberButtonDown(button: sender)
     }
-    
     
     @IBAction func numberPressed(_ sender: UIButton) {
 
@@ -134,9 +147,13 @@ class ViewController: UIViewController {
             numberOfMoves += 1
             self.movesLabel.text = "Moves: " + String(numberOfMoves)
             
-            playerClickCanMove.play()
+            if musicOn {
+                playerClickCanMove.play()
+            }
         } else {
-            playerClickCantMove.play()
+            if musicOn {
+                playerClickCantMove.play()
+            }
         }
         
         if foundSolution() {
@@ -144,8 +161,11 @@ class ViewController: UIViewController {
             if numberOfMoves < lowestMoves {
                 lowestMoves = numberOfMoves
                 self.movesLabel.text = "Lowest moves!! Moves: " + String(numberOfMoves)
-                playerNewLowSound.play()
-
+                
+                if musicOn {
+                    playerNewLowSound.play()
+                }
+                
                 //Update user defaults for next time launch
                 let lowestMoveDefaults = UserDefaults.standard
                 lowestMoveDefaults.set(lowestMoves, forKey: "LowestMoves")
@@ -154,7 +174,9 @@ class ViewController: UIViewController {
                 lowestMoveLabel.text = "  Current Lowest Moves : " + String(lowestMoves)
                 
             } else {
-                playerFinishedSound.play()
+                if musicOn {
+                    playerFinishedSound.play()
+                }
             }
         } else {
             solutionFoundLabel.alpha = 0
@@ -272,12 +294,18 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let lowestMoveDefaults = UserDefaults.standard
+        let slideNumberDefaults = UserDefaults.standard
 
-        if (lowestMoveDefaults.value(forKey: "LowestMoves") == nil) {
+        if (slideNumberDefaults.value(forKey: "LowestMoves") == nil) {
             lowestMoves = 1000
         } else {
-            lowestMoves = lowestMoveDefaults.value(forKey: "LowestMoves") as! Int
+            lowestMoves = slideNumberDefaults.value(forKey: "LowestMoves") as! Int
+        }
+        
+        if (slideNumberDefaults.value(forKey: "MusicOnOff") == nil) {
+            musicOn = true
+        } else {
+            musicOn = slideNumberDefaults.value(forKey: "MusicOnOff") as! Bool
         }
         
         lowestMoveLabel.text = "  Current Lowest Moves : " + String(lowestMoves)
@@ -345,9 +373,20 @@ class ViewController: UIViewController {
 
         //enable swipe on number buttons
         enableSwipeOnNumberButton()
+
+        //sound
+        displayMusicChoiceImage()
         
     }
 
+    func displayMusicChoiceImage() {
+        if musicOn {
+            soundOnOffImage.setImage(UIImage(named:"MusicOn.png"), for: .normal)
+        } else {
+            soundOnOffImage.setImage(UIImage(named:"MusicOff.png"), for: .normal)
+        }
+    }
+    
     func enableSwipeOnNumberButton() {
         var leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe))
         var rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe))

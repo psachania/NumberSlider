@@ -19,6 +19,8 @@
 		9B99412B1F8147B900FB228B /* CompletedSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9B99412A1F8147A300FB228B /* CompletedSound.mp3 */; };
 		9B99412C1F8147B900FB228B /* ResetSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9B9941291F8147A300FB228B /* ResetSound.mp3 */; };
 		9BD974041F818AEC00F437ED /* number.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BD974021F818ABF00F437ED /* number.png */; };
+		9BF9EEA31F87F32A0089D240 /* MusicOff.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BF9EEA11F87F30F0089D240 /* MusicOff.png */; };
+		9BF9EEA41F87F32A0089D240 /* MusicOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BF9EEA21F87F30F0089D240 /* MusicOn.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +39,8 @@
 		9B9941291F8147A300FB228B /* ResetSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ResetSound.mp3; sourceTree = "<group>"; };
 		9B99412A1F8147A300FB228B /* CompletedSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = CompletedSound.mp3; sourceTree = "<group>"; };
 		9BD974021F818ABF00F437ED /* number.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = number.png; sourceTree = "<group>"; };
+		9BF9EEA11F87F30F0089D240 /* MusicOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MusicOff.png; sourceTree = "<group>"; };
+		9BF9EEA21F87F30F0089D240 /* MusicOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MusicOn.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +119,8 @@
 		9BD974031F818AC500F437ED /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				9BF9EEA11F87F30F0089D240 /* MusicOff.png */,
+				9BF9EEA21F87F30F0089D240 /* MusicOn.png */,
 				9BD974021F818ABF00F437ED /* number.png */,
 			);
 			path = Images;
@@ -179,6 +185,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9BF9EEA31F87F32A0089D240 /* MusicOff.png in Resources */,
+				9BF9EEA41F87F32A0089D240 /* MusicOn.png in Resources */,
 				9BD974041F818AEC00F437ED /* number.png in Resources */,
 				9B1576091F815B38001C6FBB /* NewLowest.mp3 in Resources */,
 				9B99412B1F8147B900FB228B /* CompletedSound.mp3 in Resources */,
